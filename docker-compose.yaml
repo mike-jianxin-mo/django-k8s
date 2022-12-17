@@ -12,3 +12,4 @@ services:
       - web/.env
     ports:
       - "8001:8020"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
