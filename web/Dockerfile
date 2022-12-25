@@ -1,6 +1,7 @@
 FROM python:3.10.6-slim
 
 COPY . /app
+COPY ./env.docker /app/.env
 WORKDIR /app
 
 RUN python3 -m venv /opt/venv
