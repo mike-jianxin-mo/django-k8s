@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=8020
     env_file:
-      - web/.env
+      - web/.env.docker
     ports:
       - "8001:8020"
     command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
@@ -23,11 +23,16 @@ services:
     #   - POSTGRES_HOST=postgres_db
     #   - POSTGRES_PORT=5432
     env_file:
-      - web/.env
+      - web/.env.docker
+    # expose port to the other docker services
     expose:
-      - 5432
+      - 5433
+    # show ports to localhost
+    ports:
+      - "5433:5433"
     volumes:
       - posgres_data:/var/lib/postgresql/data/
+    command: -p 5433
 
 volumes:
   posgres_data:
