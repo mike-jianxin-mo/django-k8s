@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECURITY_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DJANGO_DEBUG')) == "1"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = [] # failed! it will caused the 400 error!
 
 
 # Application definition
