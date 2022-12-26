@@ -34,5 +34,17 @@ services:
       - posgres_data:/var/lib/postgresql/data/
     command: -p 5433
 
+  redis_db:
+    image: redis
+    restart: always
+    expose:
+      - 6380
+    ports:
+      - "6380:6380"
+    volumes:
+      - redis_data:/data
+    entrypoint: redis-server --appendonly yes --port 6380
+
 volumes:
   posgres_data:
+  redis_data:
